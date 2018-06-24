@@ -1,6 +1,6 @@
 class Cell
   ALIVE_CELL_LABEL = '*'.freeze
-  DEAD_CELL_LABEL = '0'.freeze
+  DEAD_CELL_LABEL = ' '.freeze
 
   def initialize
     @alive = false
