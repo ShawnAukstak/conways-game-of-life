@@ -1,12 +1,12 @@
 require_relative 'lib/game'
 
-BOARD_SIZE =  40
+BOARD_SIZE =  30
 
 game = Game.new(Board.new(BOARD_SIZE, Cell))
 
-10_000.times {
-  puts "\n" * 10
+loop  {
+  system 'clear'
   game.print_board
   game.advance
-  sleep(0.25)
+  sleep(0.1)
 }
