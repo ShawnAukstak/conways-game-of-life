@@ -6,7 +6,6 @@ class BoardAdvancer
   def advance
     new_board = Board.new(@board.size, Cell)
 
-
     (0...@board.size).each do |i|
       (0...@board.size).each do |j|
         count = neighbors_count(i, j)
@@ -14,7 +13,6 @@ class BoardAdvancer
         if count == 3 || (@board.cells[i][j].alive? && count == 2)
           new_board.cells[i][j].spawn
         end
-
       end
     end
 
@@ -26,63 +24,26 @@ class BoardAdvancer
   def neighbors_count(i, j)
     count = 0
 
-    # Up
-    if i - 1 >= 0
-      #Top
-      if @board.cells[i-1][j].alive?
-        count += 1
-      end
-
-      #Top left
-      if j - 1 >= 0
-        if @board.cells[i-1][j-1].alive?
-          count += 1
-        end
-      end
-
-      #Top right
-      if j + 1 < @board.size
-        if @board.cells[i-1][j+1].alive?
-          count += 1
-        end
-      end
+    # NW, N, NE
+    [-1, 0, 1].each do |x|
+        count += 1 if cell_alive?(i - 1, j - x)
     end
 
-    #Left
-    if j - 1 >= 0
-      if @board.cells[i][j-1].alive?
-        count += 1
-      end
-    end
+    # W, E
+    count += 1 if cell_alive?(i, j - 1)
+    count += 1 if cell_alive?(i, j + 1)
 
-    #right
-    if j + 1 < @board.size
-      if @board.cells[i][j+1].alive?
-        count += 1
-      end
-    end
-
-    #down
-    if i + 1 < @board.size
-      if @board.cells[i+1][j].alive?
-        count += 1
-      end
-
-      #left
-      if j - 1 >= 0
-        if @board.cells[i+1][j-1].alive?
-          count += 1
-        end
-      end
-
-      #right
-      if j + 1 < @board.size
-        if @board.cells[i+1][j+1].alive?
-          count += 1
-        end
-      end
+    # SW, S, SE
+    [-1, 0, 1].each do |x|
+        count += 1 if cell_alive?(i + 1, j - x)
     end
 
     count
+  end
+
+  def cell_alive?(i, j)
+    i >= 0 && i < @board.size &&
+    j >= 0 && j < @board.size &&
+    @board.cells[i][j].alive?
   end
 end

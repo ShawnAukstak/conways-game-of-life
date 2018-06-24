@@ -1,2 +1,4 @@
-RSpec.describe do
+RSpec.describe BoardAdvancer do
+
+
 end
