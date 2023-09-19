@@ -1,7 +1,7 @@
 # Conways Game of Life
 A solution to Rails Conf 2018 [live pairing](https://www.youtube.com/watch?v=zEf6iUIkjf4).
 
-![Conways Game of Life](https://media.giphy.com/media/YW1ydugBbyHYEAidTx/giphy.gif)
+![Conways Game of Life](https://github.com/ShawnAukstak/conways-game-of-life/assets/69374354/8f98b803-b7b3-4b0a-af05-831ea19acbd2)
 
 ## Rules
 - Any live cell with fewer than two live neighbors dies, as if by under population.
